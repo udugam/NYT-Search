@@ -11,6 +11,20 @@ import {
 
 class Search extends Component {
     state = {
+        topic:"",
+        startYear:"",
+        endYear:""
+    }
+
+    handleInputChange = event => {
+        const {name,value} = event.target
+        this.setState({
+            [name]: value
+        })
+    }
+
+    handleFormSubmit = event => {
+        event.preventDefault()
 
     }
 
@@ -23,17 +37,17 @@ class Search extends Component {
                 <CardBody>
                     <Form>
                         <FormGroup>
-                            <Label for='topic'>Topic</Label>
-                            <Input type='text' name='topicInput' id='topic'/>
+                            <Label for='topicInput'>Topic</Label>
+                            <Input onChange={this.handleInputChange} value={this.state.topic} type='text' name='topic' id='topicInput'/>
                         </FormGroup>
                         <FormGroup>
-                            <Label for='startYear'>Start Year</Label>
-                            <Input type='date' name='startYearInput' id='startYear'/>
+                            <Label for='startYearInput'>Start Year</Label>
+                            <Input onChange={this.handleInputChange} value={this.state.startYear} type='date' name='startYear' id='startYearInput'/>
                         </FormGroup><FormGroup>
                             <Label for='endYear'>End Year</Label>
-                            <Input type='date' name='endYearInput' id='endYear'/>
+                            <Input onChange={this.handleInputChange} value={this.state.endYear} type='date' name='endYear' id='endYearInput'/>
                         </FormGroup>
-                        <Button>Search</Button>
+                        <Button onClick={this.handleFormSubmit}>Search</Button>
                     </Form>
                 </CardBody>
             </Card>
